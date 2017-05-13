@@ -11,7 +11,11 @@ describe('generator-karma-benchmark:app', () => {
 
   it('creates files', () => {
     assert.file([
-      'dummyfile.txt'
+      'package.json',
+      'karma.conf.js',
+      'ReadMe',
+      // 'vendor',
+      'benchmark/each.benchmark.js'
     ]);
   });
 });

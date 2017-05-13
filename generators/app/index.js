@@ -10,12 +10,14 @@ module.exports = class extends Generator {
       'Welcome to the world-class ' + chalk.red('generator-karma-benchmark') + ' generator!'
     ));
 
-    const prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+    const prompts = [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your project name',
+        default: this.appname
+      }
+    ];
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
@@ -24,13 +26,27 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
+    var files = [
+      'package.json',
+      'karma.conf.js',
+      'ReadMe',
+      // 'vendor',
+      'benchmark/each.benchmark.js'
+    ];
+
+    files.forEach(file => {
+      this.fs.copy(
+        this.templatePath(file),
+        this.destinationPath(file)
+      );
+    });
   }
 
   install() {
-    this.installDependencies();
+    this.installDependencies({
+      bower: false,
+      npm: false,
+      yarn: true
+    });
   }
 };
