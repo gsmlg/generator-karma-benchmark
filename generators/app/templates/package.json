@@ -1,8 +1,12 @@
 {
+  "name": "",
+  "version": "1.0.0",
+  "description": "benchmark for ui",
   "scripts": {
     "start": "karma start"
   },
   "dependencies": {
+    "benchmark": "^2.1.4",
     "exports-loader": "^0.7.0",
     "imports-loader": "^0.8.0",
     "karma": "^4.4.0",

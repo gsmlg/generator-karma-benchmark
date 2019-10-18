@@ -57,10 +57,9 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-        'Chrome', 
-        'IE', 
-        'Firefox', 
-        'Safari',
+        'Chrome',
+        'Firefox',
+        process.platform === 'darwin' ? 'Safari' : 'IE',
     ],
 
 
@@ -81,16 +80,6 @@ module.exports = function(config) {
       // webpack watches dependencies
 
       // webpack configuration
-      module: {
-        rules: [
-        ]
-      },
-      resolve: {
-            modules: [
-                __dirname + "/vendor",
-                __dirname + "/node_modules"
-            ],
-        },
     },
 
     webpackMiddleware: {
